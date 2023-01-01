@@ -12,12 +12,30 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3310:3310"
-  web:
+    networks:
+      - laravel
+  nginx:
     image: nginx:alpine
     ports:
       - "8080:80"
     volumes:
-      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./laravel:/var/www/html  
+    networks:
+      - laravel
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./laravel:/var/www/html
+    ports:
+      - "9000:80"
+    networks:
+      - laravel
+networks:
+ laravel:
 
-      
+
+
+
