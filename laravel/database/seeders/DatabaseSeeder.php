@@ -14,7 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
+        //crear registros para usuarios
+        \App\Models\User::factory(10)->create();
+
+        //crear registros para movimientos
+        \App\Models\Movimientos::factory(10)->create();
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

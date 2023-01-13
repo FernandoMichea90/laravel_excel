@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Movimientos;
+use App\Http\Controllers\MovimientosController as Movimientos;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,9 +14,10 @@ use App\Http\Controllers\Movimientos;
 |
 */
 // controlador movimientos
-Route::get('test', function(){
-    return "hola fernando";
-});
+Route::get('get_movimientos', [Movimientos::class, 'get_movimientos']);
+// buscar movimientos por id 
+Route::get('get_movimiento/{id}', [Movimientos::class, 'get_movimiento']);
+
 // Route::get('/movimientos', [\App\Http\Controllers\Movimientos::class, 'obtenerMovimientos']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
