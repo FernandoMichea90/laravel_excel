@@ -26,7 +26,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
               //se crea la relacion con la tabla users
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           
         });
     }
@@ -41,3 +41,4 @@ return new class extends Migration
         Schema::dropIfExists('movimientos');
     }
 };
+  

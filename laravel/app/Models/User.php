@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //se crea la relacion con la tabla movimientos
+    public function movimientos(){
+        return $this->hasMany('App\Models\Movimientos');
+    }   
+
 }
